@@ -1,0 +1,8 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: versions.spring_data_jpa
+    api group: 'org.hibernate', name: 'hibernate-core', version: versions.hibernate
+}

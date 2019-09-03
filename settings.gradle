@@ -1,0 +1,4 @@
+rootProject.name = 'language-training'
+include 'data-model'
+include 'data-model-boot-starter'
+
