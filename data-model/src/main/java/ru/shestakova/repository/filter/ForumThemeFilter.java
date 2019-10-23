@@ -1,5 +1,6 @@
 package ru.shestakova.repository.filter;
 
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +10,24 @@ import lombok.experimental.FieldDefaults;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class ForumThemeFilter {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
+  Long authorId;
 
-  private Long registeredFrom;
-  private Long registeredTo;
+  Integer from;
+  Integer count;
+
+  Long createdFrom;
+  Long createdTo;
+
+  Long editedFrom;
+  Long editedTo;
+
+  Long lastMessageFrom;
+  Long lastMessageTo;
+
+  Integer totalMessagesFrom;
+  Integer totalMessagesTo;
+
+  List<Integer> terminationStatuses;
 }

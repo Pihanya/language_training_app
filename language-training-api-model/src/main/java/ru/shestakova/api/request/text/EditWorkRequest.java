@@ -1,4 +1,4 @@
-package ru.shestakova.repository.filter;
+package ru.shestakova.api.request.text;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -6,14 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import ru.shestakova.api.model.text.WorkType;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class EditWorkRequest {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
-
-  private Long registeredFrom;
-  private Long registeredTo;
+  WorkType type;
+  String title;
+  String text;
 }

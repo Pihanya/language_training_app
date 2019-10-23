@@ -9,11 +9,14 @@ import lombok.experimental.FieldDefaults;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class BankTextFilter {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
+  Integer from;
+  Integer count;
 
-  private Long registeredFrom;
-  private Long registeredTo;
+  Long createdFrom;
+  Long createdTo;
+
+  Long editedFrom;
+  Long editedTo ;
 }

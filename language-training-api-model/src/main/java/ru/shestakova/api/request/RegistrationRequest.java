@@ -1,4 +1,4 @@
-package ru.shestakova.repository.filter;
+package ru.shestakova.api.request;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,11 +9,7 @@ import lombok.experimental.FieldDefaults;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
-
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
-
-  private Long registeredFrom;
-  private Long registeredTo;
+public class RegistrationRequest {
+  private String username;
+  private String password;
 }

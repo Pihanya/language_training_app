@@ -1,19 +1,18 @@
-package ru.shestakova.repository.filter;
+package ru.shestakova.api.response.text;
 
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import ru.shestakova.api.model.text.Assessment;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class GetAssessmentsResponse {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
-
-  private Long registeredFrom;
-  private Long registeredTo;
+  Integer length;
+  List<Assessment> assessments;
 }

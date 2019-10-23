@@ -1,4 +1,4 @@
-package ru.shestakova.repository.filter;
+package ru.shestakova.api.model.user;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -9,11 +9,13 @@ import lombok.experimental.FieldDefaults;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class UserDetails {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
+  UserLevel level;
+  String screenName;
+  Integer rating;
+  String bio;
+  Long createDate;
+  Long editDate;
 
-  private Long registeredFrom;
-  private Long registeredTo;
 }

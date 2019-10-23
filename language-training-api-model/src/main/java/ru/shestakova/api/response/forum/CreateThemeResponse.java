@@ -1,4 +1,4 @@
-package ru.shestakova.repository.filter;
+package ru.shestakova.api.response.forum;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -6,14 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import ru.shestakova.api.model.forum.ForumTheme;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class CreateThemeResponse {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
+  Status status;
+  ForumTheme theme;
 
-  private Long registeredFrom;
-  private Long registeredTo;
+  public enum Status {
+    SUCCESS,
+    INITIATOR_NOT_FOUND;
+
+    public boolean isSuccess() {
+      return this == SUCCESS;
+    }
+  }
 }

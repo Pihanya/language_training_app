@@ -1,5 +1,6 @@
 package ru.shestakova.repository.filter;
 
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +10,22 @@ import lombok.experimental.FieldDefaults;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class TextWorkFilter {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
+  Integer from;
+  Integer count;
 
-  private Long registeredFrom;
-  private Long registeredTo;
+  Integer textId;
+  Long authorId;
+
+  List<Integer> workTypes;
+
+  Integer ratingFrom = 0;
+  Integer ratingTo = Integer.MAX_VALUE;
+
+  Long createdFrom;
+  Long createdTo;
+
+  Long editedFrom;
+  Long editedTo;
 }

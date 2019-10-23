@@ -1,7 +1,7 @@
 package ru.shestakova.util;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
@@ -9,20 +9,21 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-@Data @FieldDefaults(level = AccessLevel.PROTECTED)
+@Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PROTECTED)
 public abstract class Timestampable implements Serializable {
 
-  @Column(name = "CreationDate", updatable = false)
-  Date creationDate;
+  @Column(name = "CreateDate", updatable = false)
+  Long createDate;
 
   @Column(name = "EditDate")
-  Date editDate;
+  Long editDate;
 
   @Version
   @Column(name = "Version")
@@ -34,13 +35,17 @@ public abstract class Timestampable implements Serializable {
 
   @PrePersist
   void createdAt() {
-    this.creationDate = this.editDate = new Date();
+    if (this.createDate != null) {
+      this.editDate = this.createDate;
+    } else {
+      this.createDate = this.editDate = Instant.now().toEpochMilli();
+    }
     this.version = 0;
   }
 
   @PreUpdate
   void updatedAt() {
-    this.editDate = new Date();
+    this.editDate = Instant.now().toEpochMilli();
     this.version += 1;
   }
 }

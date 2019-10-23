@@ -1,19 +1,15 @@
-package ru.shestakova.repository.filter;
+package ru.shestakova.api.request.forum;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.Accessors;
 
 @Data @Accessors(chain = true) @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor @AllArgsConstructor
-public class ServiceUserFilter {
+public class CreateMessageRequest {
 
-  private Integer fromRating = 0;
-  private Integer toRating = Integer.MAX_VALUE;
-
-  private Long registeredFrom;
-  private Long registeredTo;
+  String text;
 }
